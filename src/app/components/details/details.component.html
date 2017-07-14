@@ -1,0 +1,36 @@
+<div class="container">
+  <div><ngx-loading [show]="loading"></ngx-loading></div>
+  <div class="page" *ngIf="!loading">
+    <div class="breadcrumbs">
+      <a href="index.html">Home</a>
+      <a href="review.html">Movie Review</a>
+      <span>{{ currentMovie.title }}</span>
+    </div>
+
+    <div class="content">
+      <div class="row">
+        <div class="col-md-6">
+          <figure class="movie-poster"><img src="{{ currentMovie.image }}" alt="#"></figure>
+        </div>
+        <div class="col-md-6">
+          <h2 class="movie-title">{{ currentMovie.title }}</h2>
+          <ul class="movie-meta">
+            <li><strong>Rating:</strong>
+              <div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">{{ currentMovie.vote }}</strong> out of 10</span></div>
+            </li>
+            <li><strong>Language:</strong> {{ currentMovie.language.toUpperCase() }}</li>
+            <li><strong>Length:</strong> {{ currentMovie.length }} mins.</li>
+            <li><strong>Premiere:</strong> {{ currentMovie.releaseDate }} (USA)</li>
+            <li><strong>Category:</strong><span *ngFor="let genre of currentMovie.genresId"> {{ genre.name }}<span *ngIf="genre !== currentMovie.genresId[currentMovie.genresId.length - 1]">, </span></span></li>
+            <li><strong>Countries:</strong><span *ngFor="let country of currentMovie.country"> {{ country.name }}<span *ngIf="country !== currentMovie.country[currentMovie.country.length - 1]">, </span></span></li>
+            <li><strong>Category:</strong><span *ngFor="let company of currentMovie.companies"> {{ company.name }}<span *ngIf="company !== currentMovie.companies[currentMovie.companies.length - 1]">, </span></span></li>
+          </ul>
+          <div class="movie-summary">
+            <p style="font-size: 20px;">{{ currentMovie.desc }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="trailer"></div>
+    </div>
+  </div>
+</div>
