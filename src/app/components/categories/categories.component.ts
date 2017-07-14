@@ -30,4 +30,10 @@ export class CategoriesComponent implements OnInit {
       this.loading = false;
     });
   }
+
+  public openCategory(id: number) {
+    this.movieService.getMoviesByGenreId(id).subscribe((movies) => {
+      console.log(movies);
+    });
+  }
 }

@@ -8,7 +8,7 @@
     <div class="content">
       <div class="row">
         <md-chip-list class="mat-chip-list-stacked">
-          <md-chip *ngFor="let category of categories.genres"
+          <md-chip (click)="openCategory(category.id)" *ngFor="let category of categories.genres"
                    selected="true"
                    color="red">
             {{category.name}}

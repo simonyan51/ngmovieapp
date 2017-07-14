@@ -55,5 +55,11 @@ export class MoviesService {
 
   }
 
+  getMoviesByGenreId(id: number) {
+    return this.http.get(Constants.TMDB_API_URL + Constants.TMB_API_GENRE + id + Constants.TMB_API_MOVIES + "?api_key=" + Constants.TMDB_API_KEY + Constants.TMDB_API_LANG)
+
+      .map((res) => res.json());
+  }
+
 
 }

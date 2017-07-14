@@ -37,6 +37,10 @@ import {LoadingModule} from "ngx-loading";
 
     RouterModule.forRoot([
       {
+        path: "",
+        component: HomeComponent,
+      },
+      {
         path: "home",
         component: HomeComponent,
       },
