@@ -16,7 +16,7 @@
           <h2 class="movie-title">{{ currentMovie.title }}</h2>
           <ul class="movie-meta">
             <li><strong>Rating:</strong>
-              <div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">{{ currentMovie.vote }}</strong> out of 10</span></div>
+              <div class="star-rating" title="Rated {{ currentMovie.vote }} out of 10"><span style="width:80%"><strong class="rating">{{ currentMovie.vote }}</strong> out of 10</span></div>
             </li>
             <li><strong>Language:</strong> {{ currentMovie.language.toUpperCase() }}</li>
             <li><strong>Length:</strong> {{ currentMovie.length }} mins.</li>

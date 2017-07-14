@@ -15,25 +15,25 @@ export class MoviesService {
   public getMoviesByPage(page: number):any {
 
     return this.http.get(Constants.TMDB_API_URL +
-                         "/movie/popular?api_key=" +
-                         Constants.TMDB_API_KEY + "&language=en-US&page=" + page)
-
-                         .map((res) => res.json());
+      Constants.TMB_API_MOVIE +
+      "popular?api_key=" +
+      Constants.TMDB_API_KEY + Constants.TMDB_API_LANG + page)
+      .map((res) => res.json());
 
 
   }
 
   public getMovieById(id: number) {
-    return this.http.get(Constants.TMDB_API_URL +
-      "/movie/"+ id +"?api_key=" +
-      Constants.TMDB_API_KEY + "&language=en-US")
-
+    return this.http.get(
+      Constants.TMDB_API_URL +
+      Constants.TMB_API_MOVIE + id +"?api_key=" +
+      Constants.TMDB_API_KEY + Constants.TMDB_API_LANG)
       .map((res) => res.json());
   }
 
   public getMoviesImages(id) {
 
-    return this.http.get(Constants.TMDB_API_URL + "/movie/" + id + "/images?api_key=" + Constants.TMDB_API_TOKEN + "&language=en-US")
+    return this.http.get(Constants.TMDB_API_URL + Constants.TMB_API_MOVIE + id + "/images?api_key=" + Constants.TMDB_API_KEY + Constants.TMDB_API_LANG)
 
       .map((res) => res.json());
 
@@ -41,7 +41,15 @@ export class MoviesService {
 
   public getMovieVideo(id) {
 
-    return this.http.get(Constants.TMDB_API_URL + "/movie/" + id + "/videos?api_key=" + Constants.TMDB_API_KEY + "&language=en-US")
+    return this.http.get(Constants.TMDB_API_URL + Constants.TMB_API_MOVIE + id + "/videos?api_key=" + Constants.TMDB_API_KEY + Constants.TMDB_API_LANG)
+
+      .map((res) => res.json());
+
+  }
+
+  public getGenres() {
+
+    return this.http.get(Constants.TMDB_API_URL + Constants.TMB_API_GENRE + "list?api_key=" + Constants.TMDB_API_KEY + Constants.TMDB_API_LANG)
 
       .map((res) => res.json());
 

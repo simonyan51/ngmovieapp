@@ -56,7 +56,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
       iframe.setAttribute("src", this.videoSrc);
       iframe.setAttribute("width", "100%");
-      iframe.setAttribute("height", "800px");
+      iframe.setAttribute("height", "600px");
       document.getElementById("trailer").appendChild(iframe);
     });
   }

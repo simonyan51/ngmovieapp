@@ -1,3 +1,21 @@
-<p>
-  categories works!
-</p>
+<div class="container">
+  <div><ngx-loading [show]="loading"></ngx-loading></div>
+  <div class="page" *ngIf="!loading">
+    <div class="breadcrumbs">
+      <a href="/categories">Categories</a>
+    </div>
+
+    <div class="content">
+      <div class="row">
+        <md-chip-list class="mat-chip-list-stacked">
+          <md-chip *ngFor="let category of categories.genres"
+                   selected="true"
+                   color="red">
+            {{category.name}}
+          </md-chip>
+        </md-chip-list>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -4,7 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MdButtonModule, MdInputModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdGridListModule, MdProgressSpinnerModule, MdProgressBarModule } from '@angular/material'
+import {
+  MdButtonModule, MdInputModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdListModule,
+  MdGridListModule, MdProgressSpinnerModule, MdProgressBarModule, MdChipsModule
+} from '@angular/material'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
@@ -64,9 +67,11 @@ import {LoadingModule} from "ngx-loading";
     MdButtonModule,
     MdInputModule,
     MdCardModule,
+    MdChipsModule,
     MdMenuModule,
     MdToolbarModule,
     MdIconModule,
+    MdListModule,
     MdGridListModule,
     MdProgressSpinnerModule,
     MdProgressBarModule
