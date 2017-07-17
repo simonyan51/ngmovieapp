@@ -4,19 +4,51 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {
-  MdButtonModule, MdInputModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdListModule,
-  MdGridListModule, MdProgressSpinnerModule, MdProgressBarModule, MdChipsModule
-} from '@angular/material'
+import {LoadingModule} from "ngx-loading";
+import {Constants} from "./storages/Constants";
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { DetailsComponent } from './components/details/details.component';
 import { AboutComponent } from './components/about/about.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { LoginComponent } from './components/login/login.component';
-import { OrderMovieComponent } from './components/order-movie/order-movie.component';
 import { MoviesService } from "./services/movies.service";
-import { DetailsComponent } from './components/details/details.component';
-import {LoadingModule} from "ngx-loading";
+import {
+  MD_PLACEHOLDER_GLOBAL_OPTIONS,
+  MdAutocompleteModule,
+  MdButtonModule,
+  MdButtonToggleModule,
+  MdCardModule,
+  MdCheckboxModule,
+  MdChipsModule,
+  MdCoreModule,
+  MdDatepickerModule,
+  MdDialogModule,
+  MdExpansionModule,
+  MdGridListModule,
+  MdIconModule,
+  MdInputModule,
+  MdListModule,
+  MdMenuModule,
+  MdNativeDateModule,
+  MdProgressBarModule,
+  MdProgressSpinnerModule,
+  MdRadioModule,
+  MdRippleModule,
+  MdSelectModule,
+  MdSidenavModule,
+  MdSliderModule,
+  MdSlideToggleModule,
+  MdSnackBarModule,
+  MdTabsModule,
+  MdToolbarModule,
+  MdTooltipModule,
+
+} from '@angular/material';
+import { CategoryMoviesComponent } from './components/category-movies/category-movies.component';
+import {SafePipe} from "./pipes/SafePipe";
+
+
 
 
 @NgModule({
@@ -26,63 +58,48 @@ import {LoadingModule} from "ngx-loading";
     AboutComponent,
     CategoriesComponent,
     LoginComponent,
-    OrderMovieComponent,
-    DetailsComponent
+    DetailsComponent,
+    CategoryMoviesComponent,
+    SafePipe
   ],
   imports: [
+    RouterModule.forRoot(Constants.ROUTES),
     BrowserModule,
     FormsModule,
     HttpModule,
     LoadingModule,
-
-    RouterModule.forRoot([
-      {
-        path: "",
-        component: HomeComponent,
-      },
-      {
-        path: "home",
-        component: HomeComponent,
-      },
-      {
-        path: "home/:id",
-        component: DetailsComponent
-      },
-      {
-        path: "categories",
-        component: CategoriesComponent
-      },
-      {
-        path: "order_movie",
-        component: OrderMovieComponent
-      },
-      {
-        path: "about",
-        component: AboutComponent
-      },
-      {
-        path: "login",
-        component: LoginComponent
-      },
-
-    ]),
-
     BrowserAnimationsModule,
+    MdAutocompleteModule,
     MdButtonModule,
-    MdInputModule,
+    MdButtonToggleModule,
     MdCardModule,
+    MdCheckboxModule,
     MdChipsModule,
-    MdMenuModule,
-    MdToolbarModule,
-    MdIconModule,
-    MdListModule,
+    MdCoreModule,
+    MdDatepickerModule,
+    MdDialogModule,
+    MdExpansionModule,
     MdGridListModule,
+    MdIconModule,
+    MdInputModule,
+    MdListModule,
+    MdMenuModule,
+    MdNativeDateModule,
+    MdProgressBarModule,
     MdProgressSpinnerModule,
-    MdProgressBarModule
-
+    MdRadioModule,
+    MdRippleModule,
+    MdSelectModule,
+    MdSidenavModule,
+    MdSliderModule,
+    MdSlideToggleModule,
+    MdSnackBarModule,
+    MdTabsModule,
+    MdToolbarModule,
+    MdTooltipModule,
   ],
-  providers: [MoviesService],
+  providers: [MoviesService, {provide: MD_PLACEHOLDER_GLOBAL_OPTIONS, useValue: { float: 'always' }}],
   bootstrap: [AppComponent]
 })
 
-export class AppModule { }
+export class AppModule {}

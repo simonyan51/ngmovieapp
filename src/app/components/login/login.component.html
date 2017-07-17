@@ -1,3 +1,19 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <div><ngx-loading [show]="loading"></ngx-loading></div>
+  <div class="page" *ngIf="!loading">
+    <div class="breadcrumbs">
+      <a href="/categories">Categories</a>
+    </div>
+
+    <div class="content">
+      <h1 class="center-block">Login</h1>
+      <form class="form-group">
+
+            <input class="form-control" placeholder="Enter Username"><br>
+            <input class="form-control" type="password" placeholder="Enter Password"><br>
+            <input class="btn btn-primary form-control" type="button" value="Log In">
+      </form>
+    </div>
+  </div>
+</div>
+

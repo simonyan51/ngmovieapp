@@ -7,13 +7,15 @@
 
     <div class="content">
       <div class="row">
-        <md-chip-list class="mat-chip-list-stacked">
-          <md-chip (click)="openCategory(category.id)" *ngFor="let category of categories.genres"
-                   selected="true"
-                   color="red">
-            {{category.name}}
-          </md-chip>
-        </md-chip-list>
+          <md-card style="cursor: pointer" *ngFor="let category of categories.genres">
+
+            <a href="/categories/{{category.id}}">
+              <md-card-content>
+                <md-card-title>{{category.name}}</md-card-title>
+              </md-card-content>
+            </a>
+
+          </md-card>
       </div>
     </div>
   </div>

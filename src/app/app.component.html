@@ -5,8 +5,10 @@
       <a id="branding">
         <!--<img src="home/homeImages/images/logo.png" alt="" class="logo">-->
         <div class="logo-copy">
-          <h1 class="site-title">51 Movies</h1>
-          <small class="site-description">Tagline goes here</small>
+          <a class="-underline" href="/home">
+            <h1 class="site-title">51 Movies</h1>
+            <small class="site-description">Tagline goes here</small>
+          </a>
         </div>
       </a>
 
@@ -15,7 +17,6 @@
         <ul class="menu">
           <li class="menu-item" (click)="currentPath = 'home'"  [ngClass]="{'current-menu-item' : currentPath === 'home'}" routerLink="/home"><a>Home</a></li>
           <li class="menu-item" (click)="currentPath = 'categories'"  [ngClass]="{'current-menu-item' : currentPath === 'categories'}" routerLink="/categories"><a>Categories</a></li>
-          <li class="menu-item" (click)="currentPath = 'order_movie'"  [ngClass]="{'current-menu-item' : currentPath === 'order_movie'}" routerLink="/order_movie"><a>Order Movie</a></li>
           <li class="menu-item" (click)="currentPath = 'about'"  [ngClass]="{'current-menu-item' : currentPath === 'about'}" routerLink="/about"><a>About</a></li>
           <li class="menu-item" (click)="currentPath = 'login'"  [ngClass]="{'current-menu-item' : currentPath === 'login'}" routerLink="/login"><a>Login</a></li>
         </ul> <!-- .menu -->

@@ -1,8 +1,6 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Movie} from "../../storages/Movie";
+import {Component, OnInit} from '@angular/core';
 import {MoviesService} from "../../services/movies.service";
-import {ActivatedRoute} from "@angular/router";
-import {Constants} from "app/storages/Constants";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-categories',
@@ -15,25 +13,20 @@ export class CategoriesComponent implements OnInit {
 
   public categories: any = [];
 
-  constructor(private movieService : MoviesService) {}
+  constructor(private moviesService : MoviesService, private router : Router) {}
 
   ngOnInit() {
-  this.getGenres();
+
+    this.getGenres();
 
   }
 
   private getGenres() {
     this.loading = true;
-    this.movieService.getGenres().subscribe((genres) => {
-      console.log(genres);
+    this.moviesService.getGenres().subscribe((genres) => {
       this.categories = genres;
       this.loading = false;
     });
   }
 
-  public openCategory(id: number) {
-    this.movieService.getMoviesByGenreId(id).subscribe((movies) => {
-      console.log(movies);
-    });
-  }
 }

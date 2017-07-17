@@ -16,7 +16,7 @@ export class MoviesService {
 
     return this.http.get(Constants.TMDB_API_URL +
       Constants.TMB_API_MOVIE +
-      "popular?api_key=" +
+      "/popular?api_key=" +
       Constants.TMDB_API_KEY + Constants.TMDB_API_LANG + page)
       .map((res) => res.json());
 
@@ -26,14 +26,14 @@ export class MoviesService {
   public getMovieById(id: number) {
     return this.http.get(
       Constants.TMDB_API_URL +
-      Constants.TMB_API_MOVIE + id +"?api_key=" +
+      Constants.TMB_API_MOVIE + "/" + id +"?api_key=" +
       Constants.TMDB_API_KEY + Constants.TMDB_API_LANG)
       .map((res) => res.json());
   }
 
   public getMoviesImages(id) {
 
-    return this.http.get(Constants.TMDB_API_URL + Constants.TMB_API_MOVIE + id + "/images?api_key=" + Constants.TMDB_API_KEY + Constants.TMDB_API_LANG)
+    return this.http.get(Constants.TMDB_API_URL + Constants.TMB_API_MOVIE + "/" + id + "/images?api_key=" + Constants.TMDB_API_KEY + Constants.TMDB_API_LANG)
 
       .map((res) => res.json());
 
@@ -41,7 +41,7 @@ export class MoviesService {
 
   public getMovieVideo(id) {
 
-    return this.http.get(Constants.TMDB_API_URL + Constants.TMB_API_MOVIE + id + "/videos?api_key=" + Constants.TMDB_API_KEY + Constants.TMDB_API_LANG)
+    return this.http.get(Constants.TMDB_API_URL + Constants.TMB_API_MOVIE + "/" + id + "/videos?api_key=" + Constants.TMDB_API_KEY + Constants.TMDB_API_LANG)
 
       .map((res) => res.json());
 
@@ -49,14 +49,14 @@ export class MoviesService {
 
   public getGenres() {
 
-    return this.http.get(Constants.TMDB_API_URL + Constants.TMB_API_GENRE + "list?api_key=" + Constants.TMDB_API_KEY + Constants.TMDB_API_LANG)
+    return this.http.get(Constants.TMDB_API_URL + Constants.TMB_API_GENRE + "/list?api_key=" + Constants.TMDB_API_KEY + Constants.TMDB_API_LANG)
 
       .map((res) => res.json());
 
   }
 
   getMoviesByGenreId(id: number) {
-    return this.http.get(Constants.TMDB_API_URL + Constants.TMB_API_GENRE + id + Constants.TMB_API_MOVIES + "?api_key=" + Constants.TMDB_API_KEY + Constants.TMDB_API_LANG)
+    return this.http.get(Constants.TMDB_API_URL + Constants.TMB_API_GENRE + "/" + id + Constants.TMB_API_MOVIES + "?api_key=" + Constants.TMDB_API_KEY + Constants.TMDB_API_LANG)
 
       .map((res) => res.json());
   }

@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Movie} from "../../storages/Movie";
+import {Constants} from "app/storages/Constants";
 import {MoviesService} from "../../services/movies.service";
 import {ActivatedRoute} from "@angular/router";
-import {Constants} from "app/storages/Constants";
 
 @Component({
   selector: 'app-details',
@@ -19,10 +19,9 @@ export class DetailsComponent implements OnInit, OnDestroy {
   public videoId;
   private currentMovie : any;
 
-  constructor(private movieService : MoviesService, private route: ActivatedRoute) { }
+  constructor(private moviesService : MoviesService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-
     this.getMovieId();
     this.getMovieDetails(this.id);
 
@@ -31,7 +30,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   private getMovieDetails(id: number) {
 
 
-    this.movieService.getMovieById(id).subscribe((movie) => {
+    this.moviesService.getMovieById(id).subscribe((movie) => {
       this.currentMovie = new Movie(
         movie.id,
         movie.title,
@@ -49,15 +48,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
       this.loading = false;
     });
 
-    this.movieService.getMovieVideo(id).subscribe((video) => {
-      this.videoId = Constants.YOUTUBE_HOST + video.results[1].id;
-      this.videoSrc = Constants.YOUTUBE_HOST + video.results[1].key;
-      let iframe = document.createElement("iframe");
-
-      iframe.setAttribute("src", this.videoSrc);
-      iframe.setAttribute("width", "100%");
-      iframe.setAttribute("height", "600px");
-      document.getElementById("trailer").appendChild(iframe);
+    this.moviesService.getMovieVideo(id).subscribe((video) => {
+      if (video.results[1] !== undefined) {
+        this.videoId = Constants.YOUTUBE_HOST + video.results[1].id;
+        this.videoSrc = Constants.YOUTUBE_HOST + video.results[1].key;
+      }
     });
   }
 

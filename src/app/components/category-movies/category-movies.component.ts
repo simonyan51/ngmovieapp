@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviesService } from "../../services/movies.service";
 import {Movie} from "../../storages/Movie";
+import {MoviesService} from "../../services/movies.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-category-movies',
+  templateUrl: './category-movies.component.html',
+  styleUrls: ['./category-movies.component.css']
 })
-
-export class HomeComponent implements OnInit {
+export class CategoryMoviesComponent implements OnInit {
 
   public loading;
 
@@ -23,38 +22,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getMovies(1);
+    this.getCategoryId();
 
   }
 
-
-  private getMovies(page: number) : void {
-    this.loading = true;
-    this.moviesService.getMoviesByPage(page)
-      .subscribe(data => {
-        data.results.forEach(movie => {
-
-          let newMovie = new Movie(
-            movie.id,
-            movie.title,
-            movie.genres,
-            movie.overview,
-            "https://image.tmdb.org/t/p/w185_and_h278_bestv2" + movie.backdrop_path,
-            movie.vote_average,
-            movie.vote_count,
-            movie.release_date,
-            movie.runtime,
-            movie.production_countries,
-            movie.original_language,
-            movie.production_companies
-          );
-
-          this.movies.push(newMovie);
-
-        });
-        this.loading = false;
-      });
-  }
 
   public getCategoryId() {
     this.loading = true;
@@ -95,6 +66,10 @@ export class HomeComponent implements OnInit {
       });
       this.loading = false;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
 }
