@@ -2,8 +2,7 @@
   <div><ngx-loading [show]="loading"></ngx-loading></div>
   <div class="page" *ngIf="!loading">
     <div class="breadcrumbs">
-      <a href="index.html">Home</a>
-      <a href="review.html">Movie Review</a>
+      <a href="/home">Home</a>
       <span>{{ currentMovie.title }}</span>
     </div>
 
@@ -31,7 +30,7 @@
         </div>
       </div>
       <div class="row" id="trailer">
-        <iframe class="frame" [src]="videoSrc | safe"></iframe>
+        <iframe *ngIf="videoExists" class="frame" [src]="videoSrc | safe"></iframe>
       </div>
     </div>
   </div>

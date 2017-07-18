@@ -17,6 +17,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   private sub: any;
   public videoSrc;
   public videoId;
+  public videoExists;
   private currentMovie : any;
 
   constructor(private moviesService : MoviesService, private route: ActivatedRoute) { }
@@ -45,15 +46,19 @@ export class DetailsComponent implements OnInit, OnDestroy {
         movie.original_language,
         movie.production_companies
       );
-      this.loading = false;
+
+      this.moviesService.getMovieVideo(id).subscribe((video) => {
+        if (video.results[1] !== undefined) {
+          this.videoId = Constants.YOUTUBE_HOST + video.results[1].id;
+          this.videoSrc = Constants.YOUTUBE_HOST + video.results[1].key;
+          this.videoExists = true;
+        } else {
+          this.videoExists = false;
+        }
+        this.loading = false;
+      });
     });
 
-    this.moviesService.getMovieVideo(id).subscribe((video) => {
-      if (video.results[1] !== undefined) {
-        this.videoId = Constants.YOUTUBE_HOST + video.results[1].id;
-        this.videoSrc = Constants.YOUTUBE_HOST + video.results[1].key;
-      }
-    });
   }
 
   private getMovieId() : void {
@@ -61,6 +66,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id'];
     });
+  }
+
+  public setSrc() : string {
+    this.loading = false;
+    return this.videoSrc;
   }
 
 
